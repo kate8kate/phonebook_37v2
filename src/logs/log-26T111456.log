@@ -1,0 +1,13 @@
+11:14:57.890 [main] WARN  org.testng.internal.Configuration -- Detected a static method [tests.BaseTest.startBrowser()]. Static configuration methods can cause unexpected behavior.
+11:14:57.903 [main] WARN  org.testng.internal.Configuration -- Detected a static method [tests.BaseTest.tearDown()]. Static configuration methods can cause unexpected behavior.
+11:14:57.962 [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  /Users/kategonshteyn/Library/Caches/JetBrains/IdeaIC2023.3/temp-testng-customsuite.xml
+
+11:14:58.015 [main] INFO  tests.BaseTest -- run browser settings
+11:14:59.131 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager -- Using chromedriver 124.0.6367.91 (resolved driver for Chrome 124)
+11:14:59.168 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager -- Exporting webdriver.chrome.driver as /Users/kategonshteyn/.cache/selenium/chromedriver/mac64/124.0.6367.91/chromedriver
+11:15:03.548 [main] INFO  tests.BaseTest -- Start test: homePageOpened
+11:15:03.753 [main] INFO  tests.BaseTest -- PASSEDhomePageOpened
+11:15:03.754 [main] INFO  tests.BaseTest -- Stop test
+11:15:03.755 [main] INFO  tests.BaseTest -- ------------------------------------
+11:15:03.761 [main] INFO  tests.BaseTest -- quit browser

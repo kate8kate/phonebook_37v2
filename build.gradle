@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation group: 'org.testng', name: 'testng', version: '7.9.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.19.0'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.7.0'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.4'
+}
+
+test {
+    useTestNG()
+}
+
+task qa(type:Test) {
+    useTestNG() {
+        def suite1 = project.hasProperty("suite1")
+        def suite2 = project.hasProperty("suite2")
+
+        if(suite1) {
+            suites 'src/test/resources/testng.xml'
+        } else if (suite2) {
+            suites 'src/test/resources/regression.xml'
+        }
+    }
+
+    if(project.hasProperty("browser")) {
+        systemProperty 'browser',"${browser}"
+    }
+}
