@@ -44,8 +44,8 @@ public class BaseTest {
         if(result.isSuccess()) {
             logger.info("PASSED " + result.getMethod().getMethodName());
         } else {
-//            logger.error("FAILED " + result.getMethod().getMethodName()
-//                    + "Screenshot: " + app.getUserHelper().takeScreenshot());
+            logger.error("FAILED " + result.getMethod().getMethodName()
+                    + "Screenshot: " + app.getUserHelper().takeScreenshot());
         }
         logger.info("Stop test");
         logger.info("-------------------------------------------------------");

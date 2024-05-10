@@ -22,7 +22,6 @@ public class DeleteContactTests extends BaseTest{
 
     @Test
     public void deleteOneContactTest() {
-        // add new contact
 //        app.getContactHelper().clickAddOnNavBar();
 //        ContactDTO contactDTO = new ContactDTO()
 //                .setName("contacttodekate")
@@ -41,8 +40,8 @@ public class DeleteContactTests extends BaseTest{
 
     @Test
     public void deleteAllExistingContacts() {
-//        app.getContactHelper().deleteAllContacts();
-//        app.getContactHelper().pause(3000);
-//        Assert.assertTrue(app.getContactHelper().isContactListEmpty());
+        app.getContactHelper().deleteAllContacts();
+        app.getContactHelper().pause(3000);
+        Assert.assertTrue(app.getContactHelper().isContactListEmpty());
     }
 }
