@@ -27,4 +27,14 @@ public class GetAllContactsTests extends BaseTestAPI{
                     " name: " + contact.getName());
         }
     }
+    @Test(description = "negative get all contacts test invalid endpoint")
+    public void getAllContactsInvalidEndpoint() {
+        given()
+                .header(AUTH,token)
+                .when()
+                .get("/contact")
+                .then()
+                .assertThat().statusCode(403);
+    }
+
 }

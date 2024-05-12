@@ -9,13 +9,14 @@ import java.util.Random;
 
 import static io.restassured.RestAssured.given;
 
-public class DeleteContactsTest extends BaseTestAPI{
+public class DeleteContactsTest extends BaseTestAPI {
     private String id = "";
+
     @BeforeMethod
     public void precondition() {
         Random random = new Random();
         String name = "John" + String.valueOf(random.nextInt(1000));
-        String phone = String.valueOf(random.nextInt(1000,10000)) +"456789";
+        String phone = String.valueOf(random.nextInt(1000, 10000)) + "456789";
         System.out.println(phone);
 
         ContactDTOLombok contactDTOLombok = ContactDTOLombok.builder()
@@ -40,14 +41,27 @@ public class DeleteContactsTest extends BaseTestAPI{
         id = str[1].trim();
         System.out.println(id);
     }
-@Test
+
+    @Test
     public void deleteOneContactPositiveTest() {
-    String message = given()
-            .header(AUTH, token)
-            .delete(ENDPOINT_CONTACTS + "/" + id)
-            .then()
-            .assertThat().statusCode(200)
-            .extract().path("message");
-    System.out.println("delete contact: " + message);
-}
+        String message = given()
+                .header(AUTH, token)
+                .delete(ENDPOINT_CONTACTS + "/" + id)
+                .then()
+                .assertThat().statusCode(200)
+                .extract().path("message");
+        System.out.println("delete contact: " + message);
+    }
+
+    @Test(description = "negative delete contact with invalid ID")
+    public void deleteOneContactNegativeTest() {
+        String nonExistedId = "ljfnsd67576";
+        String errorMessage = given()
+                .header(AUTH, token)
+                .delete(ENDPOINT_CONTACTS + "/" + nonExistedId)
+                .then()
+                .assertThat().statusCode(400)
+                .extract().path("message");
+        System.out.println("Error message: " + errorMessage);
+    }
 }
