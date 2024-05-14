@@ -2,11 +2,8 @@ package tests.api;
 
 import dto.ContactDTOLombok;
 import io.restassured.http.ContentType;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.Random;
-
 import static io.restassured.RestAssured.given;
 
 public class UpdateContactTest extends BaseTestAPI{
@@ -25,24 +22,23 @@ public class UpdateContactTest extends BaseTestAPI{
             .description("first")
             .build();
 
-    String message = given()
+    String contactId = given()
             .header(AUTH, token)
             .body(contactDTOLombok)
             .contentType(ContentType.JSON)
             .post(ENDPOINT_CONTACTS)
             .then()
             .assertThat().statusCode(200)
-            .extract().path("message");
-    String[] str = message.split(":");
-    String id = str[1].trim();
+            .extract().path("id");
 
-    String updateEmail = "new@mail.com";
+    contactDTOLombok.setEmail("new@mail.com");
+    contactDTOLombok.setId(contactId);
 
         given()
                 .header(AUTH,token)
                 .contentType(ContentType.JSON)
-                .body("email: "+ updateEmail)
-                .put(ENDPOINT_CONTACTS + "/" + id)
+                .body(contactDTOLombok)
+                .put(ENDPOINT_CONTACTS + "/" + contactId)
                 .then()
                 .assertThat().statusCode(200);
 
