@@ -44,4 +44,18 @@ public class DataProviders {
         return list.iterator();
     }
 
+    // script for PageObjectModel
+
+//    @DataProvider
+//    public static Iterator<Object[]> usingCSVFile() throws IOException {
+//        BufferedReader in = new BufferedReader(new FileReader("src/test/resources/city.csv"));
+//        List<Object[]> userData = new ArrayList<Object[]>();
+//        String line = in.readLine();
+//        while (line != null) {
+//            userData.add(line.split(","));
+//            line = in.readLine();
+//        }
+//        in.close();
+//        return userData.iterator();
+//    }
 }
